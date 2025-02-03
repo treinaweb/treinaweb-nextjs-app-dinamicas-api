@@ -14,9 +14,17 @@ export async function obterTodos(): Promise<Post[]> {
     return data;
 }
 
-export async function obterPorSlug(slug: string): Promise<Post> {
-    const { data } = await axios.get(`${BASE_API}/${slug}`);
-    return data;
+export async function obterPorSlug(slug: string): Promise<Post | null> {
+   try {
+        const { data } = await axios.get(`${BASE_API}/${slug}`);
+        return data;
+   } catch (error: any) {
+        if(error.response?.status === 404) {
+            return null;
+        };
+
+        throw new Error("Erro ao buscar post");
+   }
 }
 
 export async function excluir(slug: string): Promise<void> {

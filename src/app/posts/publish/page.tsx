@@ -3,7 +3,7 @@
 import styles from './publish.module.css';
 import { useRouter } from 'next/navigation';
 import { v4 as uuidv4 } from 'uuid';
-import * as postRepository from '@/api/service/post.service';
+import * as postService from '@/api/service/post.service';
 
 
 export default function PostPublish() {
@@ -16,7 +16,7 @@ export default function PostPublish() {
     const content = formData.get("content") as string;
 
     try {
-      await postRepository.salvar({
+      await postService.salvar({
         id: uuidv4(),
         title,
         description,

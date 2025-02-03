@@ -6,9 +6,7 @@ export default async function PostPage( { params } : { params: {slug: string}}) 
     const { slug } = await params;
     const post = await postRepository.obterPorSlug(slug);
 
-    console.log(post);
-
-    if(post.error === 'Post não encontrado') {
+    if(!post) {
         notFound();
     };
 

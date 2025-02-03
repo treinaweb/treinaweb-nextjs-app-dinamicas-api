@@ -3,7 +3,7 @@
 import styles from './edit.module.css';
 import { useRouter } from 'next/navigation';
 import { v4 as uuidv4 } from 'uuid';
-import * as postRepository from '@/api/service/post.service';
+import * as postService from '@/api/service/post.service';
 import { Post } from '@/api/model/post';
 
 
@@ -26,7 +26,7 @@ export default function EditPostForm( {post} : {post: Post}) {
         slug: title.toLowerCase().replace(/\s/g, '-').replace(/[^\w-]+/g, '')
       }
 
-      await postRepository.update(updatedPost);
+      await postService.update(updatedPost);
 
       alert(`Post: ${title} - Foi atualizado com sucesso!`);
       router.push('/');

@@ -1,7 +1,7 @@
 "use client"
 
 import { useRouter } from "next/navigation";
-import * as postRepository from "@/api/service/post.service";
+import * as postService from "@/api/service/post.service";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 
@@ -12,7 +12,7 @@ export default function DeletePost( {slug} : {slug: string}) {
         const isConfirmed = confirm("você tem certeza que deseja excluir o post?");
         if(isConfirmed) {
             try {
-                await postRepository.excluir(slug);
+                await postService.excluir(slug);
                 router.refresh();
             } catch (error) {
                 alert("A exclusão não foi efetuada!");
