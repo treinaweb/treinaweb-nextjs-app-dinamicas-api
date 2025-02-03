@@ -1,4 +1,4 @@
-import * as postRepository from "@/backend/repository/post.respository";
+import * as postRepository from "@/api/service/post.service";
 import EditPostForm from "@/ui/components/EditPostForm/EditPostForm";
 import { notFound } from "next/navigation";
 

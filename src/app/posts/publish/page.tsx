@@ -3,7 +3,7 @@
 import styles from './publish.module.css';
 import { useRouter } from 'next/navigation';
 import { v4 as uuidv4 } from 'uuid';
-import * as postRepository from '@/backend/repository/post.respository';
+import * as postRepository from '@/api/service/post.service';
 
 
 export default function PostPublish() {

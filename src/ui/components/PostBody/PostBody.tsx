@@ -1,4 +1,4 @@
-import { Post } from '@/backend/model/post';
+import { Post } from '@/api/model/post';
 import styles from './PostBody.module.css';
 
 export default function PostBody({ post }: { post: Post }) {

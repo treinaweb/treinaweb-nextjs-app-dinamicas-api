@@ -1,7 +1,7 @@
 "use client"
 
 import { useRouter } from "next/navigation";
-import * as postRepository from "@/backend/repository/post.respository";
+import * as postRepository from "@/api/service/post.service";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 

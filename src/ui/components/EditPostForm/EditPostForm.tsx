@@ -3,8 +3,8 @@
 import styles from './edit.module.css';
 import { useRouter } from 'next/navigation';
 import { v4 as uuidv4 } from 'uuid';
-import * as postRepository from '@/backend/repository/post.respository';
-import { Post } from '@/backend/model/post';
+import * as postRepository from '@/api/service/post.service';
+import { Post } from '@/api/model/post';
 
 
 export default function EditPostForm( {post} : {post: Post}) {

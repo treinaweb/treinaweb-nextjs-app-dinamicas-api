@@ -1,11 +1,33 @@
 "use server"
-import { PrismaClient } from "@prisma/client"
 import { Post } from "../model/post";
+import axios from 'axios';
 
-const db = new PrismaClient();
 const BASE_API = "http://localhost:3001/api/posts";
 
 export async function salvar(post: Post) {
+   const { data } = await axios.post(`${BASE_API}`, post);
+   return data;
+}
+
+export async function obterTodos(): Promise<Post[]> {
+    const { data } = await axios.get(`${BASE_API}`);
+    return data;
+}
+
+export async function obterPorSlug(slug: string): Promise<Post> {
+    const { data } = await axios.get(`${BASE_API}/${slug}`);
+    return data;
+}
+
+export async function excluir(slug: string): Promise<void> {
+    await axios.delete(`${BASE_API}/${slug}`);
+}
+
+export async function update(post: Post): Promise<void> {
+    await axios.patch(`${BASE_API}`, post);
+}
+
+/* export async function salvar(post: Post) {
     const response = await fetch(`${BASE_API}`, {
         method: 'Post',
         headers: {
@@ -41,4 +63,4 @@ export async function update(post: Post): Promise<void> {
         },
         body: JSON.stringify(post),
     })
-}
+} */

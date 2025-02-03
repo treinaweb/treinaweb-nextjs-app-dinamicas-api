@@ -1,4 +1,4 @@
-import { Post } from '@/backend/model/post';
+import { Post } from '@/api/model/post';
 import styles from './PostList.module.css';
 import Link from "next/link";
 import DeletePost from '../DeletePost/DeletePost';
