@@ -15,7 +15,7 @@ export default function PostList({ posts }: { posts: Post[] }) {
       </ul>
       <div style={{ textAlign: 'center' }}>
         <Link href={'/posts/publish'}>
-          <button>Nobvo Post</button>
+          <button>Novo Post</button>
         </Link>
       </div>
     </>
@@ -31,7 +31,7 @@ export function PostListItem({ post }: { post: Post }) {
         <p>{post.description}</p>
       </Link>
       <div className={styles.postActions}>
-        <DeletePost id={post.id} />
+        <DeletePost slug={post.slug} />
         <Link href={`posts/${post.slug}/edit`}>
           <FontAwesomeIcon icon={faPenToSquare} style={{width: "15px", color: "#000"}}/>
         </Link>

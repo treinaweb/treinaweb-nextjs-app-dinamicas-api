@@ -5,14 +5,14 @@ import * as postRepository from "@/backend/repository/post.respository";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 
-export default function DeletePost( {id} : {id: string}) {
+export default function DeletePost( {slug} : {slug: string}) {
     const router = useRouter();
 
     const handleDelete = async() => {
         const isConfirmed = confirm("você tem certeza que deseja excluir o post?");
         if(isConfirmed) {
             try {
-                await postRepository.excluir(id);
+                await postRepository.excluir(slug);
                 router.refresh();
             } catch (error) {
                 alert("A exclusão não foi efetuada!");

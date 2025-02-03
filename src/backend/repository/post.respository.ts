@@ -6,11 +6,15 @@ const db = new PrismaClient();
 const BASE_API = "http://localhost:3001/api/posts";
 
 export async function salvar(post: Post) {
-    return await db.post.upsert({
-        where: {id: post.id},
-        update: post,
-        create: post,
-    })
+    const response = await fetch(`${BASE_API}`, {
+        method: 'Post',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(post),
+    });
+
+    return await response.json();
 }
 
 export async function obterTodos(): Promise<Post[]> {
@@ -23,9 +27,18 @@ export async function obterPorSlug(slug: string): Promise<Post> {
     return await response.json();
 }
 
-export async function excluir(id: string): Promise<void> {
-    await db.post.delete({
-        where: { id },
-    });
+export async function excluir(slug: string): Promise<void> {
+   await fetch(`${BASE_API}/${slug}`, {
+    method: 'DELETE',
+   })
 }
 
+export async function update(post: Post): Promise<void> {
+    await fetch(`${BASE_API}`, {
+        method: 'PATCH',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(post),
+    })
+}

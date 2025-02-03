@@ -26,7 +26,7 @@ export default function EditPostForm( {post} : {post: Post}) {
         slug: title.toLowerCase().replace(/\s/g, '-').replace(/[^\w-]+/g, '')
       }
 
-      await postRepository.salvar(updatedPost);
+      await postRepository.update(updatedPost);
 
       alert(`Post: ${title} - Foi atualizado com sucesso!`);
       router.push('/');
