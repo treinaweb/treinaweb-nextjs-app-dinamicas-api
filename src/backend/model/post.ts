@@ -4,5 +4,6 @@ export interface Post {
   description: string,
   picture: string,
   slug: string,
-  content: string
+  content: string,
+  error?: string,
 }

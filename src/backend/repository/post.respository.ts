@@ -19,10 +19,8 @@ export async function obterTodos(): Promise<Post[]> {
 }
 
 export async function obterPorSlug(slug: string): Promise<Post> {
-    const post = await db.post.findUnique({
-        where: { slug },
-    });
-    return post as Post;
+    const response = await fetch(`${BASE_API}/${slug}`);
+    return await response.json();
 }
 
 export async function excluir(id: string): Promise<void> {
@@ -30,3 +28,4 @@ export async function excluir(id: string): Promise<void> {
         where: { id },
     });
 }
+
